@@ -1,0 +1,15 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="bus_202",
+    version="1.0",
+    packages=find_packages(),
+    package_data={
+        'bus_202': ['data/*.csv']},
+    install_requires=[
+        'pandas>=1.0.0'],
+    python_requires='>=3.7',
+    author="Justin G. Davis",
+    author_email="",
+    description="BUS 202, Fundamentals of Business Analytics",
+    keywords="business, data, analysis, education")
