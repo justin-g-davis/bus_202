@@ -5,7 +5,7 @@ setup(
     version="1.0",
     packages=find_packages(),
     package_data={
-        'bus_202': ['data/*.csv']},
+        'bus_202': ['data/*.xlsx']},
     install_requires=[
         'pandas>=1.0.0'],
     python_requires='>=3.7',
