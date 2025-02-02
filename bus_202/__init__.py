@@ -5,4 +5,4 @@ from pathlib import Path
 DATA_DIR = Path(__file__).parent / 'data'
 
 # Load the data when the package is imported
-gapfinder = pd.read_csv(DATA_DIR / 'gapfinder.csv')
+gapfinder = pd.read_csv(DATA_DIR / 'gapfinder.xlsx')
