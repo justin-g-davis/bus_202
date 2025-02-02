@@ -7,7 +7,13 @@ setup(
     package_data={
         'bus_202': ['data/*.xlsx']},
     install_requires=[
-        'pandas>=1.0.0'],
+        'pandas>=1.0.0',
+        'openpyxl>=3.0.0',
+        'numpy>=1.20.0',
+        'matplotlib>=3.0.0',
+        'scipy>=1.7.0',
+        'seaborn>=0.11.0'
+    ],
     python_requires='>=3.7',
     author="Justin G. Davis",
     author_email="",
