@@ -7,5 +7,5 @@ DATA_DIR = Path(__file__).parent / 'data'
 # Load the data when the package is imported
 gapfinder = pd.read_excel(DATA_DIR / 'gapfinder.xlsx')
 financials = pd.read_excel(DATA_DIR / 'financials.xlsx')
-exec_pay = pd.read_excel(DATA_DIR / 'exec_pay.xlsx')
+exec_comp = pd.read_excel(DATA_DIR / 'exec_comp.xlsx')
 a1_df = pd.read_excel(DATA_DIR / 'a1_df.xlsx')
