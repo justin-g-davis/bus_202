@@ -10,9 +10,7 @@ setup(
         'pandas>=1.0.0',
         'openpyxl>=3.0.0',
         'numpy>=1.20.0',
-        'matplotlib>=3.0.0',
-        'seaborn>=0.11.0'
-    ],
+        'matplotlib>=3.0.0'],
     python_requires='>=3.7',
     author="Justin G. Davis",
     author_email="",
