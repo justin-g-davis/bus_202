@@ -9,5 +9,5 @@ def boxplot(series, title = 'Title', label=None):
   plt.ylabel(label)
   plt.ticklabel_format(style='plain', axis='y')
   plt.grid(True, linestyle='--', alpha=0.7)
-  plt.show()
+  plt.show(block=False)
   plt.close()
