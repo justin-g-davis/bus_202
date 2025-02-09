@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 def boxplot(series, title='Title', label=None):
     """
@@ -10,11 +11,15 @@ def boxplot(series, title='Title', label=None):
     if not label:
         label = series.name
     
-    # Convert to list, handle NaN, and wrap in list
-    clean_data = [[x for x in series.dropna()]]
+    # Convert to numpy array and ensure 1D
+    data = np.array(series.dropna()).flatten()
+    
+    # Print debug info
+    print(f"Shape of data: {data.shape}")
+    print(f"First few values: {data[:5]}")
     
     # Create boxplot on the axis
-    ax.boxplot(clean_data,
+    ax.boxplot(data,
                patch_artist=True,
                boxprops=dict(facecolor='skyblue', color='black'),
                medianprops=dict(color='black'),
@@ -28,10 +33,4 @@ def boxplot(series, title='Title', label=None):
     ax.ticklabel_format(style='plain', axis='y')
     ax.grid(True, linestyle='--', alpha=0.7)
     
-    # Set y-axis limits based on data
-    data_min = min(series.dropna())
-    data_max = max(series.dropna())
-    margin = (data_max - data_min) * 0.1  # 10% margin
-    ax.set_ylim(data_min - margin, data_max + margin)
-    
-    plt.show(block=False)
+    plt.show()
