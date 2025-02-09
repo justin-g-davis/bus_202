@@ -1,33 +1,25 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
 def boxplot(series, title='Title', label=None):
-  plt.figure()
+  # Create figure and axis
+  fig, ax = plt.subplots()
+  
   if not label:
     label = series.name
   
-  # Clean data - remove NaN values
-  clean_data = series.dropna()
-  
-  # Convert to numpy array and reshape for boxplot
-  data = np.array(clean_data).reshape(-1, 1)
-  
-  # Create boxplot with matplotlib
-  plt.boxplot(data,
-  patch_artist=True,
+  # Create boxplot on the axis
+  ax.boxplot(series,
+  patch_artist=True,  # Fill boxes
   boxprops=dict(facecolor='skyblue', color='black'),
   medianprops=dict(color='black'),
   flierprops=dict(marker='o', markerfacecolor='gray'),
   whiskerprops=dict(color='black'),
   capprops=dict(color='black'))
   
-  plt.title(title)
-  plt.ylabel(label)
-  plt.ticklabel_format(style='plain', axis='y')
-  plt.grid(True, linestyle='--', alpha=0.7)
-  
-  # Add some debug info
-  print(f"Number of valid values: {len(clean_data)}")
-  print(f"Data range: {clean_data.min():.1f} to {clean_data.max():.1f}")
+  # Add labels and styling
+  ax.set_title(title)
+  ax.set_ylabel(label)
+  ax.ticklabel_format(style='plain', axis='y')
+  ax.grid(True, linestyle='--', alpha=0.7)
   
   plt.show(block=False)
