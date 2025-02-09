@@ -1,19 +1,27 @@
 import matplotlib.pyplot as plt
-import seaborn as sns
+import numpy as np
 
-def histogram(series, title='Title', label=None, bins=30):
-  plt.figure()
-  if not label:
-    label = series.name
-  
-  # Create histogram with KDE
-  sns.histplot(series, bins=bins, kde=True)
-  
-  # Add labels and grid
-  plt.title(title)
-  plt.xlabel(label)
-  plt.ylabel('Count')
-  plt.ticklabel_format(style='plain', axis='x')
-  plt.grid(True, linestyle='--', alpha=0.7)
-  
-  plt.show(block=False)
+def histogram(series, title=None, bins=30):
+    # Create figure and axis
+    fig, ax = plt.subplots()
+    
+    if not label:
+        title = series.name
+    
+    # Convert to numpy array and handle NaN
+    data = np.array(series.dropna()).flatten()
+    
+    # Create histogram
+    ax.hist(data, 
+            bins=bins,
+            edgecolor='black',
+            color='skyblue',
+            alpha=0.7)
+    
+    # Add labels and styling
+    ax.set_title(title)
+    ax.set_ylabel('Count')
+    ax.ticklabel_format(style='plain', axis='x')
+    ax.grid(True, linestyle='--', alpha=0.7)
+    
+    plt.show()
