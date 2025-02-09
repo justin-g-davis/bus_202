@@ -1,5 +1,6 @@
 import pandas as pd
 from pathlib import Path
+from .functions.trim import trim
 
 # Get the directory containing the data
 DATA_DIR = Path(__file__).parent / 'data'
