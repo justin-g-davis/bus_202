@@ -10,8 +10,11 @@ def boxplot(series, title='Title', label=None):
     if not label:
         label = series.name
     
-    # Key change: wrap values in a list
-    ax.boxplot([series.values],  # <-- This is the important change!
+    # Convert to list, handle NaN, and wrap in list
+    clean_data = [[x for x in series.dropna()]]
+    
+    # Create boxplot on the axis
+    ax.boxplot(clean_data,
                patch_artist=True,
                boxprops=dict(facecolor='skyblue', color='black'),
                medianprops=dict(color='black'),
@@ -24,5 +27,11 @@ def boxplot(series, title='Title', label=None):
     ax.set_ylabel(label)
     ax.ticklabel_format(style='plain', axis='y')
     ax.grid(True, linestyle='--', alpha=0.7)
+    
+    # Set y-axis limits based on data
+    data_min = min(series.dropna())
+    data_max = max(series.dropna())
+    margin = (data_max - data_min) * 0.1  # 10% margin
+    ax.set_ylim(data_min - margin, data_max + margin)
     
     plt.show(block=False)
