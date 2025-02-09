@@ -1,6 +1,7 @@
 import pandas as pd
 from pathlib import Path
 from .functions.trim import trim
+from .functions.boxplot import boxplot
 
 # Get the directory containing the data
 DATA_DIR = Path(__file__).parent / 'data'
