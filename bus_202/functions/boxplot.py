@@ -1,4 +1,4 @@
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import seaborn as sns
 
 def boxplot(series, title = 'Title', label=None):
