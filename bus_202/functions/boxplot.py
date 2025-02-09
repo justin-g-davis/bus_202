@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def boxplot(series, title = 'Title', label=None):
+  plt.figure()
   if not label:
     label = series.name
   sns.boxplot(y=series)
