@@ -1,5 +1,6 @@
+import numpy as np
+
 def trim(series, percentile_keep=100):
-  import numpy as np
   
   # Calculate cut percentage on each end
   cut = (100 - percentile_keep) / 2
