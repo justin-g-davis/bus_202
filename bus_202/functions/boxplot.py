@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 def boxplot(series, title='Title', label=None):
   # Create figure and axis
@@ -7,8 +8,12 @@ def boxplot(series, title='Title', label=None):
   if not label:
     label = series.name
   
-  # Convert to list and wrap in another list
-  data = [series.dropna().tolist()]  # Key change here!
+  # Convert to numpy array and ensure 1D
+  data = np.array(series.dropna()).flatten()
+  
+  # Print debug info
+  print(f"Shape of data: {data.shape}")
+  print(f"First few values: {data[:5]}")
   
   # Create boxplot on the axis
   ax.boxplot(data,
