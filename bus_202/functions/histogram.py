@@ -5,7 +5,7 @@ def histogram(series, title=None, bins=30):
     # Create figure and axis
     fig, ax = plt.subplots()
     
-    if not label:
+    if not title:
         title = series.name
     
     # Convert to numpy array and handle NaN
