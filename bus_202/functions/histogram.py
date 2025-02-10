@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from .trim import trim
 
-def histogram(series, title=None, bins=30, trim=100):
+def histogram(series, title=None, bins=30, trim_outliers=100):
     # Create figure and axis
     fig, ax = plt.subplots()
     
@@ -11,9 +11,9 @@ def histogram(series, title=None, bins=30, trim=100):
         title = series.name
         
     # Apply trimming if trim < 100
-    if trim < 100:
-        series = trim(series, trim)
-        title = f"{title} (outliers removed at {trim}% level)"
+    if trim_outliers < 100:
+        series = trim(series, trim_outliers)
+        title = f"{title} (outliers removed at {trim_outliers}% level)"
     
     # Convert to numpy array and handle NaN
     data = np.array(series.dropna()).flatten()
