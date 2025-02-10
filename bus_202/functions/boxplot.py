@@ -2,17 +2,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 from .trim import trim
 
-def boxplot(series, title=None, percentile_keep=100):
+def boxplot(series, title=None, trim=100):
     # Create figure and axis
     fig, ax = plt.subplots()
     
     if not title:
         title = series.name
         
-    # Apply trimming if percentile_keep < 100
-    if percentile_keep < 100:
-        series = trim(series, percentile_keep)
-        title = f"{title} (outliers removed at {percentile_keep}% level)"
+    # Apply trimming if trim < 100
+    if trim < 100:
+        series = trim(series, trim)
+        title = f"{title} (outliers removed at {trim}% level)"
     
     # Convert to numpy array and ensure 1D
     data = np.array(series.dropna()).flatten()
