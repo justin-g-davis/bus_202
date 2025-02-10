@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from trim import trim
+from .trim import trim
 
 def histogram(series, title=None, bins=30, percentile_keep=100):
     # Create figure and axis
