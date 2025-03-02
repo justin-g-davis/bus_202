@@ -43,7 +43,6 @@ def t_ppf(p, n):
     df = n - 1
     z = z_ppf(p)
     
-    # Improved approximation for t-distribution
     g1 = (z**3 + z) / (4 * df)
     g2 = (5*z**5 + 16*z**3 + 3*z) / (96 * df**2)
     g3 = (3*z**7 + 19*z**5 + 17*z**3 - 15*z) / (384 * df**3)
@@ -60,5 +59,6 @@ def t_cdf(t, n):
         return 1 - t_cdf(-t, n)
     
     df = n - 1
-    z = t * (1 - 1/(4*df))  # Simpler transformation
+    # Convert t to z
+    z = t * math.sqrt((df-2)/df) * (1 + t*t/(2*df))**(-0.5)
     return z_cdf(z)
