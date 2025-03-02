@@ -1,4 +1,1 @@
-from .distributions import z_ppf, z_cdf, t_ppf, t_cdf
-from .inference import ci
 
-__all__ = ['z_ppf', 'z_cdf', 't_ppf', 't_cdf', 'ci']
