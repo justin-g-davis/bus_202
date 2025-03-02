@@ -10,6 +10,12 @@ class DataFrames:
     _a1_df = None
     
     @property
+    def gapfinder(self):
+        if self._gapfinder is None:
+            self._gapfinder = pd.read_excel(DATA_DIR / 'gapfinder.xlsx')
+        return self._gapfinder
+    
+    @property
     def midterm(self):
         if self._midterm is None:
             self._midterm = pd.read_excel(DATA_DIR / 'midterm.xlsx')
