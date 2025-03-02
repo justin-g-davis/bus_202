@@ -42,10 +42,13 @@ def t_ppf(p, n):
     
     df = n - 1
     z = z_ppf(p)
-    g1 = (z**3 + z) / 4
-    g2 = (5*z**5 + 16*z**3 + 3*z) / 96
     
-    return z + g1/df + g2/(df**2)
+    # Improved approximation for t-distribution
+    g1 = (z**3 + z) / (4 * df)
+    g2 = (5*z**5 + 16*z**3 + 3*z) / (96 * df**2)
+    g3 = (3*z**7 + 19*z**5 + 17*z**3 - 15*z) / (384 * df**3)
+    
+    return z + g1 + g2 + g3
 
 def t_cdf(t, n):
     """Returns probability for a given t-value and sample size"""
@@ -57,5 +60,6 @@ def t_cdf(t, n):
         return 1 - t_cdf(-t, n)
     
     df = n - 1
+    # Improved approximation for converting t to z
     z = t * (1 - 1/(4*df) - 7/(32*df**2) - 19/(128*df**3))
     return z_cdf(z)
