@@ -43,6 +43,7 @@ class DataFrames:
 _df = DataFrames()
 
 # Export the properties
+gapfinder = _df.gapfinder
 midterm = _df.midterm
 financials = _df.financials
 exec_comp = _df.exec_comp
