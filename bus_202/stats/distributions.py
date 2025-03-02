@@ -61,5 +61,5 @@ def t_cdf(t, n):
     
     df = n - 1
     # Improved approximation for converting t to z
-    z = t * (1 - 1/(4*df) - 7/(32*df**2) - 19/(128*df**3))
+    z = t * (1 - 1/(4*df) - 7/(32*df**2))
     return z_cdf(z)
