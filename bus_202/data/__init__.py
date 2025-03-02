@@ -40,5 +40,4 @@ class DataFrames:
             self._a1_df = pd.read_excel(DATA_DIR / 'a1_df.xlsx')
         return self._a1_df
 
-# Just export the class instance
-df = DataFrames()
+df = DataFrames()  # Create the instance
