@@ -8,6 +8,7 @@ class DataFrames:
     _financials = None
     _exec_comp = None
     _a1_df = None
+    _gapfinder = None    # Added this line!
     
     @property
     def gapfinder(self):
