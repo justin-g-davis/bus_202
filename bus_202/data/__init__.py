@@ -8,7 +8,7 @@ class DataFrames:
     _financials = None
     _exec_comp = None
     _a1_df = None
-    _gapfinder = None    # Added this line!
+    _gapfinder = None
     
     @property
     def gapfinder(self):
@@ -40,12 +40,5 @@ class DataFrames:
             self._a1_df = pd.read_excel(DATA_DIR / 'a1_df.xlsx')
         return self._a1_df
 
-# Create an instance
-_df = DataFrames()
-
-# Export the properties
-gapfinder = _df.gapfinder
-midterm = _df.midterm
-financials = _df.financials
-exec_comp = _df.exec_comp
-a1_df = _df.a1_df
+# Just export the class instance
+df = DataFrames()
