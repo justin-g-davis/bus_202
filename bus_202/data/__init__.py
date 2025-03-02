@@ -3,6 +3,9 @@ from pathlib import Path
 
 DATA_DIR = Path(__file__).parent
 
+def gapfinder():
+    return pd.read_excel(DATA_DIR / 'gapfinder.xlsx')
+
 def financials():
     return pd.read_excel(DATA_DIR / 'financials.xlsx')
 
