@@ -60,16 +60,5 @@ def t_cdf(t, n):
         return 1 - t_cdf(-t, n)
     
     df = n - 1
-    
-    # Use a more accurate transformation
-    x = df/(df + t*t)
-    
-    if x > 0:
-        # Beta function approximation
-        a = df/2
-        b = 0.5
-        beta = math.exp(math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b))
-        prob = 1 - 0.5 * x**a * beta
-        return prob
-    else:
-        return 1.0
+    z = t * (1 - 1/(4*df))  # Simpler transformation
+    return z_cdf(z)
