@@ -3,3 +3,4 @@ from pathlib import Path
 from .functions.trim import trim
 from .functions.boxplot import boxplot
 from .functions.histogram import histogram
+from .data import gapfinder, financials, exec_comp, a1_df, midterm
