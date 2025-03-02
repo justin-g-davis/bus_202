@@ -29,31 +29,33 @@ def z_cdf(z):
     
     return 1 - (math.exp(-z*z/2) / math.sqrt(2*math.pi)) * poly
 
-def t_ppf(p, df):
-    """Returns t-value for a given probability and degrees of freedom"""
+def t_ppf(p, n):
+    """Returns t-value for a given probability and sample size"""
     import math
     if not 0.001 <= p <= 0.999:
         raise ValueError("Probability must be between 0.001 and 0.999")
-    if df < 1:
-        raise ValueError("Degrees of freedom must be positive")
+    if n < 2:
+        raise ValueError("Sample size must be at least 2")
     
     if p < 0.5:
-        return -t_ppf(1 - p, df)
+        return -t_ppf(1 - p, n)
     
+    df = n - 1
     z = z_ppf(p)
     g1 = (z**3 + z) / 4
     g2 = (5*z**5 + 16*z**3 + 3*z) / 96
     
     return z + g1/df + g2/(df**2)
 
-def t_cdf(t, df):
-    """Returns probability for a given t-value and degrees of freedom"""
+def t_cdf(t, n):
+    """Returns probability for a given t-value and sample size"""
     import math
-    if df < 1:
-        raise ValueError("Degrees of freedom must be positive")
+    if n < 2:
+        raise ValueError("Sample size must be at least 2")
     
     if t < 0:
-        return 1 - t_cdf(-t, df)
+        return 1 - t_cdf(-t, n)
     
+    df = n - 1
     z = t * (1 - 1/(4*df) - 7/(32*df**2) - 19/(128*df**3))
     return z_cdf(z)
