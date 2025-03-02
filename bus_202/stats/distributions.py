@@ -4,7 +4,8 @@ def z_ppf(p):
     if not 0.001 <= p <= 0.999:
         raise ValueError("Probability must be between 0.001 and 0.999")
     
-    negative = p > 0.5
+    # Fix: For p > 0.5, we want positive z-score
+    negative = p < 0.5
     if negative:
         p = 1 - p
     
@@ -31,11 +32,11 @@ def z_cdf(z):
     poly = b1*t + b2*t**2 + b3*t**3 + b4*t**4 + b5*t**5
     
     pdf = math.exp(-z*z/2) / math.sqrt(2*math.pi)
-    return 1 - pdf * poly
+    return round(1 - pdf * poly, 6)
 
 def t_ppf(p, df):
-    import math
     """Returns t-value for a given probability and degrees of freedom"""
+    import math
     if not 0.001 <= p <= 0.999:
         raise ValueError("Probability must be between 0.001 and 0.999")
     if df < 1:
@@ -48,23 +49,20 @@ def t_ppf(p, df):
     g1 = (z**3 + z) / 4
     g2 = (5*z**5 + 16*z**3 + 3*z) / 96
     
-    return z + g1/df + g2/(df**2)
+    return round(z + g1/df + g2/(df**2), 6)
 
 def t_cdf(t, df):
-    import math
     """Returns probability for a given t-value and degrees of freedom"""
+    import math
     if df < 1:
         raise ValueError("Degrees of freedom must be positive")
     
-    # Handle negative t using symmetry
     if t < 0:
         return 1 - t_cdf(-t, df)
     
-    # For very small df, use normal approximation
     if df <= 2:
         return z_cdf(t)
     
-    # Wilson-Hilferty approximation for t to z transformation
     z = t - (t**3 + t)/(4*df) - (5*t**5 + 16*t**3 + 3*t)/(96*df**2)
     
-    return z_cdf(z)
+    return round(z_cdf(z), 6)
