@@ -40,4 +40,21 @@ class DataFrames:
             self._a1_df = pd.read_excel(DATA_DIR / 'a1_df.xlsx')
         return self._a1_df
 
-df = DataFrames()  # Create the instance
+# Create a single instance
+_data = DataFrames()
+
+# Define module-level functions that return the data
+def midterm():
+    return _data.midterm
+
+def financials():
+    return _data.financials
+
+def exec_comp():
+    return _data.exec_comp
+
+def a1_df():
+    return _data.a1_df
+
+def gapfinder():
+    return _data.gapfinder
