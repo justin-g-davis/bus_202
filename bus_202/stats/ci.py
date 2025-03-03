@@ -24,4 +24,4 @@ def ci(stat, n, sd=None, proportion=False, cl=0.95):
         se = sd / math.sqrt(n)
         margin = stats.t.ppf(p, df) * se
     
-    return (round(stat - margin, 3), round(stat + margin, 3))
+    return [round(stat - margin, 3), round(stat + margin, 3)]
