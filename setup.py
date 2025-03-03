@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="bus_202",
-    version="1.3",
+    version="1.5",
     packages=find_packages(),
     package_data={
         'bus_202': ['data/*.xlsx']},
@@ -10,7 +10,8 @@ setup(
         'pandas>=1.0.0',
         'openpyxl>=3.0.0',
         'numpy>=1.20.0',
-        'matplotlib>=3.0.0'],
+        'matplotlib>=3.0.0',
+        'scipy>=1.6.0'],
     python_requires='>=3.7',
     author="Justin G. Davis",
     author_email="",
