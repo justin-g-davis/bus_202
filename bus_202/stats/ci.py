@@ -1,4 +1,4 @@
-def ci(stat, n, std=None , is_proportion=False, confidence_level=0.95):
+def ci(stat, n, std=None , is_proportion=False, cl=0.95):
     """Returns confidence interval for a mean or proportion"""
     from scipy import stats
     if not 0 < confidence_level < 1:
