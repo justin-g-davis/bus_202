@@ -1,4 +1,4 @@
-def reg(df, dp, ivs, logistic=False):
+def reg(df, dv, ivs, logistic=False):
     import statsmodels.api as sm
     import pandas as pd
     
@@ -6,21 +6,22 @@ def reg(df, dp, ivs, logistic=False):
     if isinstance(ivs, str):
         ivs = [ivs]
     
-    # Create X and y
-    X = df[ivs]
-    y = df[dp]
+    # Create X and y, adding constant
+    X = sm.add_constant(df[ivs])
+    y = df[dv]
     
     # Run appropriate regression
     if logistic:
-        # Logistic regression with constant
-        model = sm.Logit(y, X, add_constant=True)
+        # Logistic regression
+        model = sm.Logit(y, X)
     else:
-        # OLS regression with constant
-        model = sm.OLS(y, X, add_constant=True)
+        # OLS regression
+        model = sm.OLS(y, X)
     
     # Fit model and return results
     try:
         results = model.fit()
+        print(results.summary())
         return results
     except Exception as e:
         print(f"Error fitting model: {e}")
