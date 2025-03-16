@@ -10,6 +10,7 @@ class DataFrames:
     _a1_df = None
     _gapfinder = None
     _sweet_things = None
+    _sweet_things_simple = None
     
     @property
     def gapfinder(self):
@@ -46,6 +47,12 @@ class DataFrames:
         if self._sweet_things is None:
             self._sweet_things = pd.read_excel(DATA_DIR / 'sweet_things.xlsx')
         return self._sweet_things
+    
+    @property
+    def sweet_things_simple(self):
+        if self._sweet_things_simple is None:
+            self._sweet_things_simple = pd.read_excel(DATA_DIR / 'sweet_things_simple.xlsx')
+        return self._sweet_things_simple
 
 # Create a single instance
 _data = DataFrames()
@@ -68,3 +75,6 @@ def gapfinder():
 
 def sweet_things():
     return _data.sweet_things
+
+def sweet_things():
+    return _data.sweet_things_simple
