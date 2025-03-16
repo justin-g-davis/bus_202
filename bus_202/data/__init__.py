@@ -76,5 +76,5 @@ def gapfinder():
 def sweet_things():
     return _data.sweet_things
 
-def sweet_things():
+def sweet_things_simple():  # Fixed function name
     return _data.sweet_things_simple
