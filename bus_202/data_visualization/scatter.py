@@ -21,7 +21,7 @@ def scatter(df, y, x, ols=False):
     # Set style
     plt.style.use('seaborn')
     
-    # Create figure (let matplotlib handle default sizing)
+    # Create figure
     fig, ax = plt.subplots()
     
     # Create scatter plot
@@ -50,5 +50,8 @@ def scatter(df, y, x, ols=False):
     
     # Adjust layout
     plt.tight_layout()
+    
+    # Show plot without blocking
+    plt.show(block=False)
     
     return fig
