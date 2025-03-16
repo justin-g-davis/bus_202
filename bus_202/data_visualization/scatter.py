@@ -20,7 +20,7 @@ def scatter(df, y, x, ols=False):
                    y=y,
                    scatter_kws={'alpha':0.5},
                    line_kws={'color': 'red'},
-                   ci=95)
+                   ci=None)
     else:
         # Use seaborn's scatterplot
         sns.scatterplot(data=df,
@@ -29,7 +29,7 @@ def scatter(df, y, x, ols=False):
                        alpha=0.5)
     
     # Customize plot
-    plt.title(f'{y} vs {x}\nCorrelation: {corr:.3f}', pad=15)
+    plt.title(f'{y} and {x}\nCorrelation: {corr:.3f}', pad=15)
     plt.xlabel(x)
     plt.ylabel(y)
     
