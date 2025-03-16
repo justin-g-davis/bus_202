@@ -12,4 +12,4 @@ from .stats.reg import reg
 __all__ = ['trim', 'boxplot', 'histogram', 'ci', 
            'midterm', 'financials', 'exec_comp', 
            'a1_df', 'gapfinder', 'sweet_things',
-           'reg', 'scatter']
+           'sweet_things_simple', 'reg', 'scatter']
