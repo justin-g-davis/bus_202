@@ -12,6 +12,7 @@ setup(
         'numpy>=1.20.0',
         'matplotlib>=3.0.0',
         'scipy>=1.6.0',
+        'seaborn>=0.12.0',
         'statsmodels>=0.14.0'],
     python_requires='>=3.7',
     author="Justin G. Davis",
