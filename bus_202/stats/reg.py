@@ -22,7 +22,5 @@ def reg(df, dv, ivs, logistic=False):
     try:
         results = model.fit()
         print(results.summary())
-        return results
     except Exception as e:
         print(f"Error fitting model: {e}")
-        return None
