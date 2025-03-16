@@ -1,16 +1,4 @@
 def scatter(df, y, x, ols=False):
-    """
-    Create a nice scatter plot with optional OLS line and correlation coefficient
-    
-    Parameters:
-    df (pandas DataFrame): Input data
-    y (str): Column name for y-axis variable
-    x (str): Column name for x-axis variable
-    ols (bool): If True, adds OLS line with confidence interval
-    
-    Returns:
-    matplotlib figure
-    """
     import seaborn as sns
     import matplotlib.pyplot as plt
     import numpy as np
@@ -18,8 +6,8 @@ def scatter(df, y, x, ols=False):
     # Calculate correlation coefficient
     corr = df[x].corr(df[y])
     
-    # Set style
-    plt.style.use('seaborn')
+    # Set style (using seaborn's default style)
+    sns.set_style("whitegrid")
     
     # Create figure
     fig, ax = plt.subplots()
@@ -45,13 +33,8 @@ def scatter(df, y, x, ols=False):
     plt.xlabel(x)
     plt.ylabel(y)
     
-    # Add grid
-    plt.grid(True, linestyle='--', alpha=0.7)
-    
     # Adjust layout
     plt.tight_layout()
     
     # Show plot without blocking
     plt.show(block=False)
-    
-    return fig
