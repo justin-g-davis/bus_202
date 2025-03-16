@@ -1,14 +1,14 @@
-def reg(df, dv, ivs, logistic=False):
+def reg(df, y, x, logistic=False):
     import statsmodels.api as sm
     import pandas as pd
     
     # Convert ivs to list if it's a single string
-    if isinstance(ivs, str):
-        ivs = [ivs]
+    if isinstance(x, str):
+        x = [x]
     
     # Create X and y, adding constant
-    X = sm.add_constant(df[ivs])
-    y = df[dv]
+    X = sm.add_constant(df[x])
+    y = df[y]
     
     # Run appropriate regression
     if logistic:
