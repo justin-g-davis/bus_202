@@ -8,6 +8,7 @@ class DataFrames:
     _financials = None
     _exec_comp = None
     _a1_df = None
+    _a3_df = None
     _gapfinder = None
     _sweet_things = None
     _sweet_things_simple = None
@@ -43,6 +44,12 @@ class DataFrames:
         return self._a1_df
     
     @property
+    def a3_df(self):
+        if self._a3_df is None:
+            self._a3_df = pd.read_excel(DATA_DIR / 'a3_df.xlsx')
+        return self._a3_df
+    
+    @property
     def sweet_things(self):
         if self._sweet_things is None:
             self._sweet_things = pd.read_excel(DATA_DIR / 'sweet_things.xlsx')
@@ -70,11 +77,14 @@ def exec_comp():
 def a1_df():
     return _data.a1_df
 
+def a3_df():
+    return _data.a3_df
+
 def gapfinder():
     return _data.gapfinder
 
 def sweet_things():
     return _data.sweet_things
 
-def sweet_things_simple():  # Fixed function name
+def sweet_things_simple():
     return _data.sweet_things_simple
