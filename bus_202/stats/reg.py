@@ -2,6 +2,7 @@ def reg(df, y, x, fe=None, logistic=False, show_fe=False):
     import statsmodels.api as sm
     import pandas as pd
     import numpy as np
+    from io import StringIO
     
     # Convert ivs to list if it's a single string
     if isinstance(x, str):
@@ -63,11 +64,14 @@ def reg(df, y, x, fe=None, logistic=False, show_fe=False):
         
         # Create custom summary if hiding fixed effects
         if not show_fe:
-            # Get summary as DataFrame
-            summary_df = pd.read_html(results.summary().tables[1].as_html(), header=0)[0]
+            # Create summary table
+            coef_table = results.summary().tables[1]
+            html_str = StringIO(coef_table.as_html())
+            summary_df = pd.read_html(html_str)[0]
             
-            # Filter for only original variables
-            summary_df = summary_df[summary_df.index.isin(original_x)]
+            # Keep only rows for original variables
+            mask = summary_df.iloc[:, 0].isin(original_x)
+            summary_df = summary_df[mask]
             
             # Print modified summary
             print("OLS Regression Results")
@@ -77,7 +81,20 @@ def reg(df, y, x, fe=None, logistic=False, show_fe=False):
             print(f"Adj. R-squared: {results.rsquared_adj:.4f}")
             print(f"No. Observations: {results.nobs}")
             print("=" * 80)
-            print(summary_df.to_string())
+            print("Variable      Coefficient  Std Error    t-stat    P>|t|    [95% Conf. Interval]")
+            print("-" * 80)
+            
+            # Format each row
+            for _, row in summary_df.iterrows():
+                var_name = row['Unnamed: 0'].ljust(12)
+                coef = f"{float(row['coef']):10.4f}"
+                stderr = f"{float(row['std err']):10.4f}"
+                tstat = f"{float(row['t']):10.4f}"
+                pval = f"{float(row['P>|t|']):10.4f}"
+                ci_low = f"{float(row['[0.025']):10.4f}"
+                ci_high = f"{float(row['0.975]']):10.4f}"
+                print(f"{var_name} {coef} {stderr} {tstat} {pval} [{ci_low}, {ci_high}]")
+            
             print("=" * 80)
             
             # Add note about fixed effects
