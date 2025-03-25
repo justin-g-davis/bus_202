@@ -8,7 +8,7 @@ def reg(df, y, x, fe=None, logistic=False, show_fe=False):
         x = [x]
     
     # Store original x variables before adding dummies
-    original_x = x.copy()
+    original_x = ['const'] + x.copy()
     
     # Create copy of dataframe to avoid modifying original
     df_reg = df.copy()
@@ -63,47 +63,28 @@ def reg(df, y, x, fe=None, logistic=False, show_fe=False):
         
         # Create custom summary if hiding fixed effects
         if not show_fe:
-            # Get summary as HTML
-            summary = results.summary()
+            # Get summary as DataFrame
+            summary_df = pd.read_html(results.summary().tables[1].as_html(), header=0)[0]
             
-            # Convert to string representation
-            summary_str = str(summary)
+            # Filter for only original variables
+            summary_df = summary_df[summary_df.index.isin(original_x)]
             
-            # Split summary into lines
-            summary_lines = summary_str.split('\n')
-            
-            # Find the coefficient table in the summary
-            coef_start = None
-            coef_end = None
-            for i, line in enumerate(summary_lines):
-                if '=' * 13 in line and coef_start is None:  # Start of coef table
-                    coef_start = i
-                elif '=' * 13 in line and coef_start is not None:  # End of coef table
-                    coef_end = i
-                    break
-            
-            # Filter coefficient lines to only show original variables
-            filtered_lines = []
-            for line in summary_lines[coef_start:coef_end]:
-                # Keep lines with original variables or table formatting
-                if any(var in line for var in ['const'] + original_x) or '=' in line:
-                    filtered_lines.append(line)
-            
-            # Reconstruct summary with filtered coefficient table
-            final_summary = (
-                '\n'.join(summary_lines[:coef_start]) +
-                '\n' +
-                '\n'.join(filtered_lines) +
-                '\n' +
-                '\n'.join(summary_lines[coef_end:])
-            )
-            
-            print(final_summary)
+            # Print modified summary
+            print("OLS Regression Results")
+            print("=" * 80)
+            print(f"Dep. Variable: {y}")
+            print(f"R-squared: {results.rsquared:.4f}")
+            print(f"Adj. R-squared: {results.rsquared_adj:.4f}")
+            print(f"No. Observations: {results.nobs}")
+            print("=" * 80)
+            print(summary_df.to_string())
+            print("=" * 80)
             
             # Add note about fixed effects
             if fe:
                 fe_str = ', '.join(fe) if isinstance(fe, list) else fe
                 print(f"\nNote: Fixed effects for {fe_str} included but not shown")
+                print(f"Number of fixed effects: {len(dummy_cols)}")
         else:
             print(results.summary())
             
