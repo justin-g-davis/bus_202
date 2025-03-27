@@ -12,6 +12,8 @@ class DataFrames:
     _gapfinder = None
     _sweet_things = None
     _sweet_things_simple = None
+    _new_ceo = None
+    _restate = None
     
     @property
     def gapfinder(self):
@@ -60,6 +62,18 @@ class DataFrames:
         if self._sweet_things_simple is None:
             self._sweet_things_simple = pd.read_excel(DATA_DIR / 'sweet_things_simple.xlsx')
         return self._sweet_things_simple
+    
+    @property
+    def new_ceo(self):
+        if self._new_ceo is None:
+            self._new_ceo = pd.read_excel(DATA_DIR / 'new_ceo.xlsx')
+        return self._new_ceo
+    
+    @property
+    def restate(self):
+        if self._restate is None:
+            self._restate = pd.read_excel(DATA_DIR / 'restate.xlsx')
+        return self._restate
 
 # Create a single instance
 _data = DataFrames()
@@ -88,3 +102,9 @@ def sweet_things():
 
 def sweet_things_simple():
     return _data.sweet_things_simple
+
+def new_ceo():
+    return _data.new_ceo
+
+def restate():
+    return _data.restate
