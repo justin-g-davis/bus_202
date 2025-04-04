@@ -93,113 +93,113 @@ class DataFrames:
             self._restate = pd.read_excel(DATA_DIR / 'restate.xlsx')
         return self._restate
     
-@property
-def group_1_1(self):
-    if self._group_1_1 is None:
-        self._group_1_1 = pd.read_excel(DATA_DIR / 'group_1_1.xlsx')
-    return self._group_1_1
-
-@property
-def group_1_2(self):
-    if self._group_1_2 is None:
-        self._group_1_2 = pd.read_excel(DATA_DIR / 'group_1_2.xlsx')
-    return self._group_1_2
-
-@property
-def group_1_3(self):
-    if self._group_1_3 is None:
-        self._group_1_3 = pd.read_excel(DATA_DIR / 'group_1_3.xlsx')
-    return self._group_1_3
-
-@property
-def group_1_4(self):
-    if self._group_1_4 is None:
-        self._group_1_4 = pd.read_excel(DATA_DIR / 'group_1_4.xlsx')
-    return self._group_1_4
-
-@property
-def group_1_5(self):
-    if self._group_1_5 is None:
-        self._group_1_5 = pd.read_excel(DATA_DIR / 'group_1_5.xlsx')
-    return self._group_1_5
-
-@property
-def group_1_6(self):
-    if self._group_1_6 is None:
-        self._group_1_6 = pd.read_excel(DATA_DIR / 'group_1_6.xlsx')
-    return self._group_1_6
-
-@property
-def group_2_1(self):
-    if self._group_2_1 is None:
-        self._group_2_1 = pd.read_excel(DATA_DIR / 'group_2_1.xlsx')
-    return self._group_2_1
-
-@property
-def group_2_2(self):
-    if self._group_2_2 is None:
-        self._group_2_2 = pd.read_excel(DATA_DIR / 'group_2_2.xlsx')
-    return self._group_2_2
-
-@property
-def group_2_3(self):
-    if self._group_2_3 is None:
-        self._group_2_3 = pd.read_excel(DATA_DIR / 'group_2_3.xlsx')
-    return self._group_2_3
-
-@property
-def group_2_4(self):
-    if self._group_2_4 is None:
-        self._group_2_4 = pd.read_excel(DATA_DIR / 'group_2_4.xlsx')
-    return self._group_2_4
-
-@property
-def group_2_5(self):
-    if self._group_2_5 is None:
-        self._group_2_5 = pd.read_excel(DATA_DIR / 'group_2_5.xlsx')
-    return self._group_2_5
-
-@property
-def group_2_6(self):
-    if self._group_2_6 is None:
-        self._group_2_6 = pd.read_excel(DATA_DIR / 'group_2_6.xlsx')
-    return self._group_2_6
-
-@property
-def group_3_1(self):
-    if self._group_3_1 is None:
-        self._group_3_1 = pd.read_excel(DATA_DIR / 'group_3_1.xlsx')
-    return self._group_3_1
-
-@property
-def group_3_2(self):
-    if self._group_3_2 is None:
-        self._group_3_2 = pd.read_excel(DATA_DIR / 'group_3_2.xlsx')
-    return self._group_3_2
-
-@property
-def group_3_3(self):
-    if self._group_3_3 is None:
-        self._group_3_3 = pd.read_excel(DATA_DIR / 'group_3_3.xlsx')
-    return self._group_3_3
-
-@property
-def group_3_4(self):
-    if self._group_3_4 is None:
-        self._group_3_4 = pd.read_excel(DATA_DIR / 'group_3_4.xlsx')
-    return self._group_3_4
-
-@property
-def group_3_5(self):
-    if self._group_3_5 is None:
-        self._group_3_5 = pd.read_excel(DATA_DIR / 'group_3_5.xlsx')
-    return self._group_3_5
-
-@property
-def group_3_6(self):
-    if self._group_3_6 is None:
-        self._group_3_6 = pd.read_excel(DATA_DIR / 'group_3_6.xlsx')
-    return self._group_3_6
+    @property
+    def group_1_1(self):
+        if self._group_1_1 is None:
+            self._group_1_1 = pd.read_excel(DATA_DIR / 'group_1_1.xlsx')
+        return self._group_1_1
+    
+    @property
+    def group_1_2(self):
+        if self._group_1_2 is None:
+            self._group_1_2 = pd.read_excel(DATA_DIR / 'group_1_2.xlsx')
+        return self._group_1_2
+    
+    @property
+    def group_1_3(self):
+        if self._group_1_3 is None:
+            self._group_1_3 = pd.read_excel(DATA_DIR / 'group_1_3.xlsx')
+        return self._group_1_3
+    
+    @property
+    def group_1_4(self):
+        if self._group_1_4 is None:
+            self._group_1_4 = pd.read_excel(DATA_DIR / 'group_1_4.xlsx')
+        return self._group_1_4
+    
+    @property
+    def group_1_5(self):
+        if self._group_1_5 is None:
+            self._group_1_5 = pd.read_excel(DATA_DIR / 'group_1_5.xlsx')
+        return self._group_1_5
+    
+    @property
+    def group_1_6(self):
+        if self._group_1_6 is None:
+            self._group_1_6 = pd.read_excel(DATA_DIR / 'group_1_6.xlsx')
+        return self._group_1_6
+    
+    @property
+    def group_2_1(self):
+        if self._group_2_1 is None:
+            self._group_2_1 = pd.read_excel(DATA_DIR / 'group_2_1.xlsx')
+        return self._group_2_1
+    
+    @property
+    def group_2_2(self):
+        if self._group_2_2 is None:
+            self._group_2_2 = pd.read_excel(DATA_DIR / 'group_2_2.xlsx')
+        return self._group_2_2
+    
+    @property
+    def group_2_3(self):
+        if self._group_2_3 is None:
+            self._group_2_3 = pd.read_excel(DATA_DIR / 'group_2_3.xlsx')
+        return self._group_2_3
+    
+    @property
+    def group_2_4(self):
+        if self._group_2_4 is None:
+            self._group_2_4 = pd.read_excel(DATA_DIR / 'group_2_4.xlsx')
+        return self._group_2_4
+    
+    @property
+    def group_2_5(self):
+        if self._group_2_5 is None:
+            self._group_2_5 = pd.read_excel(DATA_DIR / 'group_2_5.xlsx')
+        return self._group_2_5
+    
+    @property
+    def group_2_6(self):
+        if self._group_2_6 is None:
+            self._group_2_6 = pd.read_excel(DATA_DIR / 'group_2_6.xlsx')
+        return self._group_2_6
+    
+    @property
+    def group_3_1(self):
+        if self._group_3_1 is None:
+            self._group_3_1 = pd.read_excel(DATA_DIR / 'group_3_1.xlsx')
+        return self._group_3_1
+    
+    @property
+    def group_3_2(self):
+        if self._group_3_2 is None:
+            self._group_3_2 = pd.read_excel(DATA_DIR / 'group_3_2.xlsx')
+        return self._group_3_2
+    
+    @property
+    def group_3_3(self):
+        if self._group_3_3 is None:
+            self._group_3_3 = pd.read_excel(DATA_DIR / 'group_3_3.xlsx')
+        return self._group_3_3
+    
+    @property
+    def group_3_4(self):
+        if self._group_3_4 is None:
+            self._group_3_4 = pd.read_excel(DATA_DIR / 'group_3_4.xlsx')
+        return self._group_3_4
+    
+    @property
+    def group_3_5(self):
+        if self._group_3_5 is None:
+            self._group_3_5 = pd.read_excel(DATA_DIR / 'group_3_5.xlsx')
+        return self._group_3_5
+    
+    @property
+    def group_3_6(self):
+        if self._group_3_6 is None:
+            self._group_3_6 = pd.read_excel(DATA_DIR / 'group_3_6.xlsx')
+        return self._group_3_6
 
 # Create a single instance
 _data = DataFrames()
