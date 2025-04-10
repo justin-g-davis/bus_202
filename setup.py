@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="bus_202",
-    version="1.15",
+    version="1.16",
     packages=find_packages(),
     package_data={
         'bus_202': ['data/*.xlsx']},
