@@ -6,6 +6,7 @@ DATA_DIR = Path(__file__).parent
 class DataFrames:
     _sp1500_cross_sectional = None
     _sp1500_panel = None
+    _ceo_comp = None
     
     @property
     def sp1500_cross_sectional(self):
@@ -18,6 +19,12 @@ class DataFrames:
         if self._sp1500_panel is None:
             self._sp1500_panel = pd.read_excel(DATA_DIR / 'sp1500_panel.xlsx')
         return self._sp1500_panel
+    
+    @property
+    def ceo_comp(self):
+        if self._ceo_comp is None:
+            self._ceo_comp = pd.read_excel(DATA_DIR / 'ceo_comp.xlsx')
+        return self._ceo_comp
 
 # Create a single instance
 _data = DataFrames()
@@ -28,3 +35,6 @@ def sp1500_cross_sectional():
 
 def sp1500_panel():
     return _data.sp1500_panel
+
+def ceo_comp():
+    return _data.ceo_comp
