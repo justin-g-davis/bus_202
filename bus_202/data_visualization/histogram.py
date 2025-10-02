@@ -2,9 +2,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from .trim import trim
 
-def histogram(series, title=None, bins=30, trim_outliers=100, details=False):
+def histogram(series, title=None, bins=30, trim_outliers=100, details=False, dpi=150, figsize=(6, 4)):
     # Create figure and axis
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=figsize, dpi=dpi)
     
     # Get base title
     if not title:
