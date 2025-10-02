@@ -2,9 +2,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from .trim import trim
 
-def boxplot(series, title=None, trim_outliers=100):
+def boxplot(series, title=None, trim_outliers=100, dpi=150, figsize=(8, 6)):
     # Create figure and axis
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=figsize, dpi=dpi)
     
     if not title:
         title = series.name
