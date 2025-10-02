@@ -7,6 +7,8 @@ class DataFrames:
     _sp1500_cross_sectional = None
     _sp1500_panel = None
     _ceo_comp = None
+    _a1 = None
+    _netflix_content = None
     
     @property
     def sp1500_cross_sectional(self):
@@ -25,6 +27,18 @@ class DataFrames:
         if self._ceo_comp is None:
             self._ceo_comp = pd.read_excel(DATA_DIR / 'ceo_comp.xlsx')
         return self._ceo_comp
+    
+    @property
+    def a1(self):
+        if self._a1 is None:
+            self._a1 = pd.read_excel(DATA_DIR / 'a1.xlsx')
+        return self._a1
+    
+    @property
+    def netflix_content(self):
+        if self._netflix_content is None:
+            self._netflix_content = pd.read_excel(DATA_DIR / 'netflix_content.xlsx')
+        return self._netflix_content
 
 # Create a single instance
 _data = DataFrames()
@@ -38,3 +52,9 @@ def sp1500_panel():
 
 def ceo_comp():
     return _data.ceo_comp
+
+def a1():
+    return _data.a1
+
+def netflix_content():
+    return _data.netflix_content
