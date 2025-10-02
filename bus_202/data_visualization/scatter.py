@@ -1,4 +1,4 @@
-def scatter(df, y, x, fit_line=False):
+def scatter(df, y, x, fit_line=False, dpi=150, figsize=(6, 4)):
     """
     Create a nice scatter plot with optional fit line and correlation coefficient
     
@@ -19,7 +19,7 @@ def scatter(df, y, x, fit_line=False):
     sns.set_style("whitegrid")
     
     # Create figure
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=figsize, dpi=dpi)
     
     # Create scatter plot
     if fit_line:
