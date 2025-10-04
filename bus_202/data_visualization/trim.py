@@ -1,6 +1,6 @@
 import numpy as np
 
-def trim_extremes(series, percentile_keep = 100):
+def trim(series, percentile_keep = 100):
     # Calculate how much to remove
     remove_pct = 100 - percentile_keep
     
