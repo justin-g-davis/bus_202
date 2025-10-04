@@ -9,7 +9,10 @@ def histogram(series, title=None, bins=30, trim_outliers=100, details=False, dpi
     # Get base title
     if not title:
         title = series.name
-        
+    
+    # Store original data for statistics BEFORE any trimming
+    original_data = np.array(series.dropna()).flatten()
+    
     # Apply trimming if trim < 100
     if trim_outliers < 100:
         series = trim(series, trim_outliers)
@@ -33,18 +36,18 @@ def histogram(series, title=None, bins=30, trim_outliers=100, details=False, dpi
     
     if details:
         # Add mean and median lines
-        mean = np.mean(data)
-        median = np.median(data)
+        mean = np.mean(original_data)
+        median = np.median(original_data)
         ax.axvline(mean, color='red', linestyle='--', label=f'Mean: {mean:.2f}')
         ax.axvline(median, color='green', linestyle='--', label=f'Median: {median:.2f}')
         
         # Calculate standard deviations
-        std = np.std(data)
+        std = np.std(original_data)
         
         # Calculate percentages within SDs
-        within_1sd = np.sum((data >= mean - std) & (data <= mean + std)) / len(data) * 100
-        within_2sd = np.sum((data >= mean - 2*std) & (data <= mean + 2*std)) / len(data) * 100
-        within_3sd = np.sum((data >= mean - 3*std) & (data <= mean + 3*std)) / len(data) * 100
+        within_1sd = np.sum((original_data >= mean - std) & (original_data <= mean + std)) / len(original_data) * 100
+        within_2sd = np.sum((original_data >= mean - 2*std) & (original_data <= mean + 2*std)) / len(original_data) * 100
+        within_3sd = np.sum((original_data >= mean - 3*std) & (original_data <= mean + 3*std)) / len(original_data) * 100
         
         # Add text box with statistics
         stats_text = (
