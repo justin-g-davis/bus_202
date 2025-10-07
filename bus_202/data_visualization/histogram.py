@@ -51,7 +51,7 @@ def histogram(series, title=None, bins=30, trim_outliers=100, details=False, dpi
         
         # Add text box with statistics
         stats_text = (
-            f'Skewness: {series.skew():.3f}\n'
+            f'Skewness: {original_data.skew():.3f}\n'
             f'Within 1 SD: {within_1sd:.1f}%\n'
             f'Within 2 SD: {within_2sd:.1f}%\n'
             f'Within 3 SD: {within_3sd:.1f}%'
