@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 from .trim import trim
 
 def histogram(series, title=None, bins=30, trim_outliers=100, details=False, dpi=150, figsize=(6, 4)):
@@ -49,9 +50,11 @@ def histogram(series, title=None, bins=30, trim_outliers=100, details=False, dpi
         within_2sd = np.sum((original_data >= mean - 2*std) & (original_data <= mean + 2*std)) / len(original_data) * 100
         within_3sd = np.sum((original_data >= mean - 3*std) & (original_data <= mean + 3*std)) / len(original_data) * 100
         
+        skew_val = pd.Series(original_data).skew()
+        
         # Add text box with statistics
         stats_text = (
-            f'Skewness: {original_data.skew():.3f}\n'
+            f'Skewness: {skew_val:.3f}\n'
             f'Within 1 SD: {within_1sd:.1f}%\n'
             f'Within 2 SD: {within_2sd:.1f}%\n'
             f'Within 3 SD: {within_3sd:.1f}%'
