@@ -11,6 +11,7 @@ class DataFrames:
     _netflix_content = None
     _olympic_medals = None
     _world_cup_goals = None
+    _midterm = None
     
     @property
     def sp1500_cross_sectional(self):
@@ -53,6 +54,12 @@ class DataFrames:
         if self._world_cup_goals is None:
             self._world_cup_goals = pd.read_excel(DATA_DIR / 'world_cup_goals.xlsx')
         return self._world_cup_goals
+    
+    @property
+    def midterm(self):
+        if self._midterm is None:
+            self._midterm = pd.read_excel(DATA_DIR / 'midterm.xlsx')
+        return self._midterm
 
 # Create a single instance
 _data = DataFrames()
@@ -78,3 +85,6 @@ def olympic_medals():
 
 def world_cup_goals():
     return _data.world_cup_goals
+
+def midterm():
+    return _data.midterm
