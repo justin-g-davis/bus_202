@@ -10,10 +10,11 @@ from .data import (
     olympic_medals, world_cup_goals,
     midterm)
 from .stats.ci import ci
+from .stats.moe import moe
 from .stats.reg import reg
 
 __all__ = [
-    'trim', 'boxplot', 'histogram', 'ci', 
+    'trim', 'boxplot', 'histogram', 'ci', 'moe', 
     'sp1500_cross_sectional', 'sp1500_panel', 
     'ceo_comp', 'a1', 'netflix_content', 
     'olympic_medals', 'world_cup_goals', 
