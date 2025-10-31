@@ -12,6 +12,8 @@ class DataFrames:
     _olympic_medals = None
     _world_cup_goals = None
     _midterm = None
+    _sweet_things = None
+    _sweet_things_simple = None
     
     @property
     def sp1500_cross_sectional(self):
@@ -60,6 +62,18 @@ class DataFrames:
         if self._midterm is None:
             self._midterm = pd.read_excel(DATA_DIR / 'midterm.xlsx')
         return self._midterm
+    
+    @property
+    def sweet_things(self):
+        if self._sweet_things is None:
+            self._sweet_things = pd.read_excel(DATA_DIR / 'sweet_things.xlsx')
+        return self._sweet_things
+    
+    @property
+    def sweet_things_simple(self):
+        if self._sweet_things_simple is None:
+            self._sweet_things_simple = pd.read_excel(DATA_DIR / 'sweet_things_simple.xlsx')
+        return self._sweet_things_simple
 
 # Create a single instance
 _data = DataFrames()
@@ -88,3 +102,9 @@ def world_cup_goals():
 
 def midterm():
     return _data.midterm
+
+def sweet_things():
+    return _data.sweet_things
+
+def sweet_things_simple():
+    return _data.sweet_things_simple
