@@ -6,7 +6,7 @@ from .data_visualization.histogram import histogram
 from .data_visualization.scatter import scatter
 from .data import (
     sp1500_cross_sectional, sp1500_panel, 
-    ceo_comp, a1, netflix_content, 
+    ceo_comp, a1, a3, netflix_content, 
     olympic_medals, world_cup_goals, 
     midterm, sweet_things, sweet_things_simple, 
     new_ceo, restate)
@@ -17,7 +17,7 @@ from .stats.reg import reg
 __all__ = [
     'trim', 'boxplot', 'histogram', 'ci', 'moe', 
     'sp1500_cross_sectional', 'sp1500_panel', 
-    'ceo_comp', 'a1', 'netflix_content', 
+    'ceo_comp', 'a1', 'a3', 'netflix_content', 
     'olympic_medals', 'world_cup_goals', 
     'midterm', 'sweet_things_simple', 
     'sweet_things', 'new_ceo', 'restate']
