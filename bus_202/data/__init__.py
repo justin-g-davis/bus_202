@@ -8,6 +8,7 @@ class DataFrames:
     _sp1500_panel = None
     _ceo_comp = None
     _a1 = None
+    _a3 = None
     _netflix_content = None
     _olympic_medals = None
     _world_cup_goals = None
@@ -40,6 +41,12 @@ class DataFrames:
         if self._a1 is None:
             self._a1 = pd.read_excel(DATA_DIR / 'a1.xlsx')
         return self._a1
+    
+    @property
+    def a3(self):
+        if self._a3 is None:
+            self._a3 = pd.read_excel(DATA_DIR / 'a3.xlsx')
+        return self._a3
     
     @property
     def netflix_content(self):
@@ -102,6 +109,9 @@ def ceo_comp():
 
 def a1():
     return _data.a1
+
+def a3():
+    return _data.a3
 
 def netflix_content():
     return _data.netflix_content
